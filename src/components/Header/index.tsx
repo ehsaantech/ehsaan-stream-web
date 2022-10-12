@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
+import Chip  from '@mui/material/Chip';
 import logoSrc from '../../assets/ehsaantechlogo.jpeg';
 
 const Container = styled.div`
@@ -36,8 +37,10 @@ const Center = styled.div`
 `;
 
 const Language =  styled.h1`
-      font-size: 14px;
+      font-size: 20px;
       cursor: pointer;
+      font-weight: bold;
+      letter-spacing: 1.5px;
 `;
 
 const Logo = styled.img`
@@ -49,6 +52,7 @@ const Logo = styled.img`
 const MenuItem = styled.div`
     font-size: 18px;
     font-weight: bold;
+    letter-spacing: 1.5px;
     cursor: pointer;
     margin-right: 25px;
 `
@@ -58,9 +62,6 @@ const Header = () => {
 
     const Home = () =>{
         navigate("/", {replace: true})
-    }
-    const Contact = () =>{
-        navigate("https://ehsaantech.com/contact/", {replace: true})
     }
 
   return (
@@ -75,8 +76,8 @@ const Header = () => {
             <Right>
                 <MenuItem onClick={Home}>Home</MenuItem>
                 <MenuItem>
-                <a href="https://ehsaantech.com/contact/" target="_blank" rel="noreferrer" style={{textDecoration:"none", color: "black"}}>
-                Contact Us
+                <a href="https://ehsaantech.com/contact/" target="_blank" rel="noreferrer" style={{textDecoration:"none", color: "black", cursor: "pointer"}}>
+                    <Chip label="Contact Us" color="success" style={{cursor: "pointer"}}/>
                 </a>
                 </MenuItem>
             </Right>
