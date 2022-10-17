@@ -1,6 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+import { mobile } from '../../utils/responsive';
 
 const Container = styled.div`
     height: 20px;
@@ -20,6 +21,7 @@ display: flex;
 align-items: center;
 justify-content: center;
 padding: 20px;
+${mobile({ padding: "10px", marginTop: "-15px" })};
 `;
 
 const Language =  styled.h1`
@@ -27,6 +29,7 @@ const Language =  styled.h1`
   cursor: pointer;
   font-weight: bold;
   letter-spacing: 1.5px;
+  ${mobile({ fontSize: "15px" })};
 `;
 
 const Footer = () => {

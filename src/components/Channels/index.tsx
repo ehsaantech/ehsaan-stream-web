@@ -5,7 +5,7 @@ import { Channels } from '../../types/channel';
 import { mobile } from '../../utils/responsive';
 
 
-const Channel = ({img,title,subTitle,channelName}:Channels) => {
+const Channel = ({img,title,channelRoute}:Channels) => {
 
   const Info = styled.div`
   position: absolute;
@@ -35,6 +35,7 @@ const Container = styled.div`
     transition: all 0.5s ease;
     background-color: rgba(0, 0, 0, 0.555);
   }
+  ${mobile({ height: "70vh", margin: "0px", minWidth: "0px", marginBottom: "20px" })};
 `;
 
 const Image = styled.img`
@@ -49,11 +50,7 @@ const Image = styled.img`
 const Title = styled.h1`
     color:white;
     margin-bottom: 20px;
-`;
-
-const SubTitle = styled.h3`
-    color:white;
-    font-weight: 600;
+    ${mobile({ fontSize: "x-large" })};
 `;
 
 const Icon = styled.div`
@@ -73,7 +70,7 @@ transition: all 0.5s ease;
 `;
 const navigate = useNavigate();
 const navigateChannel = () => {
-  navigate(`${channelName}`);
+  navigate(`${channelRoute}`);
 }
   return (
     <>
@@ -81,7 +78,6 @@ const navigateChannel = () => {
         <Image src={img} />
         <Info onClick={navigateChannel}>
           <Title>{title}</Title>
-          <SubTitle>{subTitle}</SubTitle>
         </Info>
     </Container>
     </>

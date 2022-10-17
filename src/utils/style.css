@@ -1,0 +1,23 @@
+.audioplayer{
+    border-radius: "1rem";
+    width: "570px" ;
+    margin-top:"10px" ;
+    margin-left: 'auto' ;
+    margin-right: 'auto' ;
+    margin-bottom: '10px' ;
+}
+
+@media only screen and (max-width: 800px) {
+    .audioplayer{
+        width: inherit !important;
+        margin: 10px 15px !important;
+    }
+    .cardimage{
+        margin-bottom: auto;
+        margin-left: 8px;
+        width: 100px !important;
+    }
+    .tracklist{
+        width: 100% !important;
+    }
+};

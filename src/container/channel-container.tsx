@@ -12,7 +12,7 @@ const ChannelContainer = () => {
   flex-wrap: wrap;
   justify-content: space-between;
   margin-top: 50px;
-  ${mobile({ padding: "0px", flexDirection:"column" })}
+  ${mobile({ padding: "12px", flexDirection:"column" })}
 `;
 const Heading = styled.h1`
     text-align: center;
@@ -21,6 +21,7 @@ const Heading = styled.h1`
     font-size: 52px;
     font-weight: 900;
     color: ${Theme.GREEN_COLOR};
+    ${mobile({ marginTop: "55px", fontSize: "21px" })}
 `;
 
 
@@ -30,7 +31,7 @@ const Heading = styled.h1`
     <Container>
         {
           channelData.map((item)=>(
-            <Channel img={item.img} title={item.title} subTitle={item.author} channelName={`${item.author}`}/>
+            <Channel img={item.img} title={item.title} channelRoute={`/channels/${item.channelRoute}`}/>
           ))
         }
     </Container>
