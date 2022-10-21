@@ -9,6 +9,10 @@ const Theme = {
     BLACK_COLOR: 'black', // `#000000`
     GREEN_COLOR: '#5fb257',
     TRANSPARENT_COLOR: 'transparent', // rgba(0,0,0,0)
+    FONT_GREY: '#3b3c3d',
+    CHANNEL_BLACK: 'rgba(0, 0, 0, 0.767)',
+    RGB_GREY: 'rgba(0, 0, 0, 0.555)',
+    BOX_SHADOW: 'rgba(0, 0, 0, 0.35) 5px 5px 10px'
 };
 
 export default Theme;
