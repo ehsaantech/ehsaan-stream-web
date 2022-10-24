@@ -1,11 +1,11 @@
-import React from "react";
+import React, { Suspense } from "react";
 import styled from "styled-components";
 import Theme from "../constants/theme";
 import { mobile } from "../utils/responsive";
 import { channelData } from "../services/data";
-import Channel from "../components/Channels";
 import { useNavigate } from "react-router-dom";
 
+const Channel =  React.lazy(()=> import('../components/Channels'));
 const ChannelContainer = () => {
   const Container = styled.div`
     display: flex;
@@ -31,11 +31,13 @@ const ChannelContainer = () => {
   return (
     <>
       <Heading>Streaming Channels For You</Heading>
+      <Suspense fallback="loading channels">
       <Container>
         {channelData.map((item) => (
           <Channel channel={item} handleNavigation={() => navigateChannel(item.channelRoute)} />
         ))}
       </Container>
+      </Suspense>
     </>
   );
 };
