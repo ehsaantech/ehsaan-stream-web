@@ -113,18 +113,24 @@ const TracksContainer = () => {
         <EpisodesHeading>Episodes By {scholarName}</EpisodesHeading>
       </Container>
       {/* tracks list  */}
+      <div style={{marginBottom: '75px'}}>
       {channelTracks.map((item) => (
         <Tracks name={item.name} handleAudio={() => audiofunction(item.name)} />
       ))}
+      </div>
+     
       <AudioPlayer
         className="audioplayer"
         style={{
           borderRadius: "1rem",
-          width: "570px",
-          marginTop: "10px",
-          marginLeft: "auto",
-          marginRight: "auto",
-          marginBottom: "10px",
+          width: "60%",
+          position: "fixed",
+          bottom: "0",
+          left: "50%",
+          transform: "translate(-50%, 0)",
+          boxShadow: "0 0 3px 0 rgb(0 0 0 / 20%)",
+          padding: "10px 15px",
+          background: "white",
         }}
         autoPlay={false}
         // layout="horizontal"
@@ -136,6 +142,7 @@ const TracksContainer = () => {
         onClickPrevious={handleClickPrevious}
         onClickNext={handleClickNext}
         onEnded={handleClickNext}
+        footer
       />
       <Footer />
     </>

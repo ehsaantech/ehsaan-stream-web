@@ -1,16 +1,12 @@
-.audioplayer{
-    border-radius: "1rem";
-    width: "570px" ;
-    margin-top:"10px" ;
-    margin-left: 'auto' ;
-    margin-right: 'auto' ;
-    margin-bottom: '10px' ;
+.rhap_main-controls-button {
+    color: rgba(0, 0, 0, 0.712) !important;
 }
-
+.rhap_volume-indicator {
+color: aquamarine !important;
+}
 @media only screen and (max-width: 800px) {
     .audioplayer{
-        width: inherit !important;
-        margin: 10px 15px !important;
+        width: 90% !important;
     }
     .cardimage{
         margin-bottom: auto;

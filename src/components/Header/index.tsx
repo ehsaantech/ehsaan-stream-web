@@ -15,6 +15,12 @@ const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+  width: -webkit-fill-available;
+  background-color: white;
+  box-shadow: 0px 5px 15px -2px grey;
   ${mobile({ padding: "25px 0px" })}
 `;
 
