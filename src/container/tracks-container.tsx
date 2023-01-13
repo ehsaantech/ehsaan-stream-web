@@ -1,19 +1,16 @@
-import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
 import styled from "styled-components";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import { mobile } from "../utils/responsive";
-import AudioPlayer from "react-h5-audio-player";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import Tracks from "../components/Tracks";
-import { channelData } from "../services/data";
 import "../utils/style.css";
 import "react-h5-audio-player/lib/styles.css";
 import Theme from "../constants/theme";
+import { AudioTracks } from "../types/tracks";
 
 const Container = styled.div`
   display: flex;
@@ -51,43 +48,13 @@ const ShortDescription = styled.p`
   margin-top: 10px;
 `;
 
-const TracksContainer = () => {
-  const location = useLocation();
-  const channelPath = location.pathname.split("/")[2];
-  const [channelIndex, setChannelIndex] = useState(0);
-  const [trackIndex, setTrackIndex] = useState(channelIndex);
-
-  useEffect(() => {
-    const index = channelData.findIndex((object) => {
-      return object.channelRoute === channelPath;
-    });
-    setChannelIndex(index);
-  }, [channelPath]);
-  const channelTracks = channelData[channelIndex].mediaTracks;
-  const audiofunction = (mediaName: any) => {
-    const index = channelTracks.findIndex((object) => {
-      return object.name === mediaName;
-    });
-
-    setTrackIndex(index);
-  };
-  const handleClickPrevious = () => {
-    setTrackIndex((currentTrack) =>
-      currentTrack === 0 ? channelTracks.length - 1 : currentTrack - 1
-    );
-  };
-
-  const handleClickNext = () => {
-    setTrackIndex((currentTrack) =>
-      currentTrack < channelTracks.length - 1 ? currentTrack + 1 : 0
-    );
-  };
-  const Tracksrc = channelTracks[trackIndex].src;
-  const Trackname = channelTracks[trackIndex].name;
-  const scholarName = channelData[channelIndex].scholarName;
-  const scholarDesc = channelData[channelIndex].scholarDescription;
-  const channelImg = channelData[channelIndex].img;
-
+const TracksContainer = ({
+  audioFunction,
+  channelTracks,
+  scholarDesc,
+  scholarName,
+  channelImg,
+}: AudioTracks) => {
   return (
     <>
       <Header />
@@ -113,37 +80,14 @@ const TracksContainer = () => {
         <EpisodesHeading>Episodes By {scholarName}</EpisodesHeading>
       </Container>
       {/* tracks list  */}
-      <div style={{marginBottom: '75px'}}>
-      {channelTracks.map((item) => (
-        <Tracks name={item.name} handleAudio={() => audiofunction(item.name)} />
-      ))}
+      <div style={{ marginBottom: "75px" }}>
+        {channelTracks.map((item: any) => (
+          <Tracks
+            name={item.name}
+            handleAudio={() => audioFunction(item.name)}
+          />
+        ))}
       </div>
-     
-      <AudioPlayer
-        className="audioplayer"
-        style={{
-          borderRadius: "1rem",
-          width: "60%",
-          position: "fixed",
-          bottom: "0",
-          left: "50%",
-          transform: "translate(-50%, 0)",
-          boxShadow: "0 0 3px 0 rgb(0 0 0 / 20%)",
-          padding: "10px 15px",
-          background: "white",
-        }}
-        autoPlay={false}
-        // layout="horizontal"
-        src={Tracksrc}
-        onPlay={(e) => console.log("onPlay")}
-        showSkipControls={true}
-        showJumpControls={false}
-        header={`Now playing: ${Trackname}`}
-        onClickPrevious={handleClickPrevious}
-        onClickNext={handleClickNext}
-        onEnded={handleClickNext}
-        footer
-      />
       <Footer />
     </>
   );

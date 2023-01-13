@@ -1,4 +1,7 @@
 export interface AudioTracks {
-    name: string;
-    src: string;
+    audioFunction: (e:any) => void;
+    channelTracks: any;
+    channelImg: string;
+    scholarName: string;
+    scholarDesc: string;
 }
