@@ -28,8 +28,8 @@ const Channel = ({ channel, handleNavigation}: Props) => {
 
   const Container = styled.div`
     flex: 1;
-    margin: 15px;
-    min-width: 520px;
+    margin: 25px;
+    min-width: 550px;
     height: 30vh;
     position: relative;
     cursor: pointer;
@@ -49,7 +49,7 @@ const Channel = ({ channel, handleNavigation}: Props) => {
   const Image = styled.img`
     width: 100%;
     height: 100%;
-    object-fit: fill;
+    object-fit: contain;
     cursor: pointer;
     opacity: 0.7;
     ${mobile({ height: "20vh" })};

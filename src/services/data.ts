@@ -1,11 +1,11 @@
 import mft from '../assets/MuftiTM.jpg';
-import muftiMenk from '../assets/muftimenk.jpg';
+import muftiMenk from '../assets/muftimenk.png';
 import MTJ from '../assets/MTJ.png';
 import ZN from '../assets/ZN.png';
 import DRIS from '../assets/DR.png';
 import khanqah from '../assets/khanqah.png';
-import MIBD from '../assets/MIBD.jpg';
-import JJ from '../assets/J.jpg';
+import MIBD from '../assets/MIBD.png';
+import JJ from '../assets/J.png';
 import MTU from '../assets/mtu.png';
 
 export const channelData = [

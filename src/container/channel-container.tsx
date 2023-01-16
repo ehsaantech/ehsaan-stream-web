@@ -1,5 +1,7 @@
 import React, { Suspense } from "react";
 import styled from "styled-components";
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
 import Theme from "../constants/theme";
 import { mobile } from "../utils/responsive";
 import { channelData } from "../services/data";
@@ -28,10 +30,18 @@ const ChannelContainer = () => {
     navigate(`/channels/${route}`);
   };
 
+  const CircularLoader  = () => {
+    return(
+  <Box sx={{ display: 'flex', justifyContent: 'center', height: '500px' }}>
+    <CircularProgress size={80} sx={{marginTop: "100px"}} />
+  </Box>
+    )
+  }
+
   return (
     <>
       <Heading>Streaming Channels For You</Heading>
-      <Suspense fallback="loading channels">
+      <Suspense fallback={<CircularLoader/>}>
       <Container>
         {channelData.map((item) => (
           <Channel channel={item} handleNavigation={() => navigateChannel(item.channelRoute)} />
