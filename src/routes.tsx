@@ -6,10 +6,11 @@ import AudioPlayer from "react-h5-audio-player";
 import "../src/utils/style.css";
 import "react-h5-audio-player/lib/styles.css";
 import { channelData } from "./services/data";
+import { logChannelVisited, pauseTrack, playTrack } from "./services/analytics";
 
 const Approutes = () => {
   const location = useLocation();
-  const channelPath = location.pathname.split("/")[2];
+  const channelPath:any = location.pathname.split("/")[2];
   const [channelIndex, setChannelIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [trackIndex, setTrackIndex] = useState(channelIndex);
@@ -25,6 +26,12 @@ const Approutes = () => {
   }, [channelPath]);
 
   const channelTracks = channelData[channelIndex].mediaTracks;
+
+  useEffect(() => {
+    if (location.pathname.includes(channelPath)) {
+        logChannelVisited(channelPath)
+    }
+  }, [channelPath, location.pathname]);
 
   useEffect(() => {
     if (location.pathname === "/") {
@@ -90,7 +97,8 @@ const Approutes = () => {
           autoPlay={false}
           autoPlayAfterSrcChange={isPlaying}
           src={Tracksrc}
-          onPlay={(e) => console.log("onPlay")}
+          onPlay={() => playTrack(channelPath)}
+          onPause={() => pauseTrack(channelPath)}
           showSkipControls={true}
           showJumpControls={false}
           header={`Now playing: ${Trackname}`}

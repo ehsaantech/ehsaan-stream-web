@@ -3,6 +3,13 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import * as firebase from "firebase/app";
+import { firebaseConfig } from './utils/firebase-config';
+
+// const app = initializeApp(firebaseConfig);
+
+firebase.initializeApp(firebaseConfig);
+
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
