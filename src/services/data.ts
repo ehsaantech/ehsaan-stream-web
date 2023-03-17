@@ -2,7 +2,7 @@ import mft from '../assets/MuftiTM.jpg';
 import muftiMenk from '../assets/muftimenk.png';
 import MTJ from '../assets/MTJ.png';
 import ZN from '../assets/ZN.png';
-import DRIS from '../assets/DR.png';
+import DRIS from '../assets/dr.png';
 import khanqah from '../assets/khanqah.png';
 import MIBD from '../assets/MIBD.png';
 import JJ from '../assets/J.png';

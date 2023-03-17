@@ -62,6 +62,7 @@ const Approutes = () => {
   const scholarName = channelData[channelIndex]?.scholarName;
   const scholarDesc = channelData[channelIndex]?.scholarDescription;
   const channelImg = channelData[channelIndex]?.img;
+
   return (
     <>
       <Routes>
@@ -94,7 +95,7 @@ const Approutes = () => {
             background: "white",
             zIndex: "100",
           }}
-          autoPlay={false}
+          autoPlay={isPlaying}
           autoPlayAfterSrcChange={isPlaying}
           src={Tracksrc}
           onPlay={() => playTrack(channelPath)}

@@ -100,7 +100,7 @@ const Header = () => {
           <MenuItem onClick={Home}>Home</MenuItem>
           <MenuItem>
             <a
-              href="https://ehsaantech.com/contact/"
+              href="https://ehsaantech.com/contact-new/"
               target="_blank"
               rel="noreferrer"
               style={{
@@ -110,7 +110,7 @@ const Header = () => {
               }}
             >
               <Chip
-                label="Contact Us"
+                label="Donate Us"
                 color="success"
                 style={{ cursor: "pointer" }}
               />

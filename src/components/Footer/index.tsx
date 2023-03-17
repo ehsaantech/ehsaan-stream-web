@@ -1,5 +1,4 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Theme from "../../constants/theme";
 import { mobile } from "../../utils/responsive";
@@ -9,43 +8,49 @@ const Container = styled.div`
   color: ${Theme.BLACK_COLOR};
 `;
 const Wrapper = styled.div`
-  padding: 10px 20px;
+  padding: 30px 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 `;
 
-const Center = styled.div`
+const Right = styled.div`
   flex: 1;
-  text-align: center;
   display: flex;
   align-items: center;
-  justify-content: center;
-  padding: 20px;
-  ${mobile({ padding: "10px", marginTop: "-15px" })};
+  justify-content: flex-end;
+  ${mobile({ flex: 2, justifyContent: "center" })}
 `;
 
-const Language = styled.h1`
+const Branding = styled.a`
   font-size: 20px;
   cursor: pointer;
   font-weight: bold;
   letter-spacing: 1.5px;
+  text-decoration: none;
+  margin-top: -20px;
+  color: ${Theme.BLACK_COLOR};
+  width: min-content;
   ${mobile({ fontSize: "15px" })};
 `;
 
+const Span = styled.span`
+  color: ${Theme.GREEN_COLOR};
+`;
+
 const Footer = () => {
-  const navigate = useNavigate();
-
-  const Home = () => {
-    navigate("/", { replace: true });
-  };
-
   return (
     <Container>
       <Wrapper>
-        <Center>
-          <Language onClick={Home}>Copyright © 2022 Ehsaan Streams.</Language>
-        </Center>
+        <Right>
+          <Branding
+            href="https://ehsaantech.com"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Product by <Span>Ehsaantech.com</Span>
+          </Branding>
+        </Right>
       </Wrapper>
     </Container>
   );
