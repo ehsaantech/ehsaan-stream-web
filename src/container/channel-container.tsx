@@ -22,7 +22,7 @@ const ChannelContainer = () => {
     margin-top: 80px;
     font-size: 52px;
     font-weight: 900;
-    color: ${Theme.GREEN_COLOR};
+    color: ${Theme.NAVY_BLUE};
     ${mobile({ marginTop: "55px", fontSize: "21px" })}
   `;
   const navigate = useNavigate();

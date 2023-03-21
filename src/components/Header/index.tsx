@@ -52,6 +52,7 @@ const Language = styled.h1`
   cursor: pointer;
   font-weight: bold;
   letter-spacing: 1.5px;
+  color: ${Theme.FONT_GREY};
   ${mobile({ display: "none" })};
 `;
 
@@ -60,11 +61,11 @@ const Logo = styled.img`
   width: 300px;
   height: auto;
   position: absolute;
-  margin-top: 30px;
+  margin-top: 42px;
   margin-left: -50px;
   ${mobile({
-    marginTop: "15px",
-    marginLeft: "-40px",
+    marginTop: "30px",
+    marginLeft: "-20px",
     position: "absolute",
     width: "200px",
     height: "auto",
@@ -77,6 +78,7 @@ const MenuItem = styled.div`
   letter-spacing: 1.5px;
   cursor: pointer;
   margin-right: 25px;
+  color: ${Theme.FONT_GREY};
   ${mobile({ fontSize: "12px", marginLeft: "10px" })}
 `;
 
@@ -111,7 +113,7 @@ const Header = () => {
             >
               <Chip
                 label="Donate Us"
-                color="success"
+                color="primary"
                 style={{ cursor: "pointer" }}
               />
             </a>

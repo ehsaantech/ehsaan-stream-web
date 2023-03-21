@@ -8,6 +8,7 @@ const Hero = () => {
     margin-top: 10%;
     text-align: center;
     letter-spacing: 1.5px;
+    color: ${Theme.NAVY_BLUE};
     ${mobile({ marginTop: "35%" })}
   `;
 

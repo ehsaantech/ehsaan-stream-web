@@ -29,13 +29,13 @@ const Branding = styled.a`
   letter-spacing: 1.5px;
   text-decoration: none;
   margin-top: -20px;
-  color: ${Theme.BLACK_COLOR};
+  color: ${Theme.FONT_GREY};
   width: min-content;
   ${mobile({ fontSize: "15px" })};
 `;
 
 const Span = styled.span`
-  color: ${Theme.GREEN_COLOR};
+  color: ${Theme.NAVY_BLUE};
 `;
 
 const Footer = () => {

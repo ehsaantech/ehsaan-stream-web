@@ -12,7 +12,8 @@ const Theme = {
     FONT_GREY: '#3b3c3d',
     CHANNEL_BLACK: 'rgba(0, 0, 0, 0.767)',
     RGB_GREY: 'rgba(0, 0, 0, 0.555)',
-    BOX_SHADOW: 'rgba(0, 0, 0, 0.35) 5px 5px 10px'
+    BOX_SHADOW: 'rgba(0, 0, 0, 0.35) 5px 5px 10px',
+    NAVY_BLUE: '#0C4573'
 };
 
 export default Theme;

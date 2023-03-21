@@ -23,11 +23,13 @@ const Container = styled.div`
 
 const Heading = styled.h1`
   letter-spacing: 1.5px;
+  color: ${Theme.NAVY_BLUE};
   ${mobile({ fontSize: "20px", fontWeight: "900", marginTop: "-15px" })};
 `;
 const EpisodesHeading = styled.h1`
   margin-top: 50px;
   letter-spacing: 1.5px;
+  color: ${Theme.NAVY_BLUE};
   ${mobile({ fontSize: "17px", textAlign: "center", fontWeight: "900" })};
 `;
 const AudioHeading = styled.h1`
@@ -37,6 +39,7 @@ const AudioHeading = styled.h1`
   font-weight: 900;
   letter-spacing: 1.3px;
   display: list-item;
+  color: ${Theme.NAVY_BLUE};
 `;
 
 const ShortDescription = styled.p`
