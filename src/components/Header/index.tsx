@@ -11,7 +11,7 @@ const Container = styled.div`
   ${mobile({ height: "50px" })}
 `;
 const Wrapper = styled.div`
-  padding: 30px 20px;
+  padding: 16px 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -22,7 +22,7 @@ const Wrapper = styled.div`
   width: -moz-available;
   background-color: white;
   box-shadow: 0px 5px 15px -2px grey;
-  ${mobile({ padding: "25px 0px" })}
+  ${mobile({ padding: "16px 0px" })}
 `;
 
 const Left = styled.div`
@@ -112,7 +112,7 @@ const Header = () => {
               }}
             >
               <Chip
-                label="Donate Us"
+                label="Support Us"
                 color="primary"
                 style={{ cursor: "pointer" }}
               />
