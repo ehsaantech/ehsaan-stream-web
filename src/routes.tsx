@@ -8,7 +8,7 @@ import Replay10Icon from "@mui/icons-material/Replay10";
 import "../src/utils/style.css";
 import "react-h5-audio-player/lib/styles.css";
 import { channelData } from "./services/data";
-import { logChannelVisited, pauseTrack, playTrack } from "./services/analytics";
+import { LogChannelVisited, pauseTrack, playTrack } from "./services/analytics";
 import Theme from "./constants/theme";
 
 const Approutes = () => {
@@ -29,12 +29,6 @@ const Approutes = () => {
   }, [channelPath]);
 
   const channelTracks = channelData[channelIndex].mediaTracks;
-
-  useEffect(() => {
-    if (location.pathname.includes(channelPath)) {
-      logChannelVisited(channelPath);
-    }
-  }, [channelPath, location.pathname]);
 
   useEffect(() => {
     if (location.pathname === "/") {
@@ -83,9 +77,15 @@ const Approutes = () => {
 
   const Tracksrc = channelTracks[trackIndex]?.src;
   const Trackname = channelTracks[trackIndex]?.name;
-  const scholarName = channelData[channelIndex]?.scholarName;
+  const scholarName:any = channelData[channelIndex]?.scholarName;
   const scholarDesc = channelData[channelIndex]?.scholarDescription;
   const channelImg = channelData[channelIndex]?.img;
+
+  useEffect(() => {
+    if (location.pathname.includes(channelPath)) {
+      LogChannelVisited(scholarName);
+    }
+  }, [channelPath, location.pathname, scholarName]);
 
   return (
     <>
@@ -143,8 +143,8 @@ const Approutes = () => {
           autoPlay={isPlaying}
           autoPlayAfterSrcChange={isPlaying}
           src={Tracksrc}
-          onPlay={() => playTrack(channelPath)}
-          onPause={() => pauseTrack(channelPath)}
+          onPlay={() => playTrack(scholarName)}
+          onPause={() => pauseTrack(scholarName)}
           showSkipControls={true}
           showJumpControls={false}
           header={`Now playing: ${Trackname}`}

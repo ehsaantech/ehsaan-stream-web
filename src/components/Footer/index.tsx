@@ -2,13 +2,15 @@ import React from "react";
 import styled from "styled-components";
 import Theme from "../../constants/theme";
 import { mobile } from "../../utils/responsive";
+import { logEhsaantechVisitors } from "../../services/analytics";
+import EhsaanTechlogo from "../../assets/ehsaantechlogo.jpeg";
 
 const Container = styled.div`
-  height: 20px;
+  height: 10px;
   color: ${Theme.BLACK_COLOR};
 `;
 const Wrapper = styled.div`
-  padding: 30px 20px;
+  padding: 0px 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -30,12 +32,15 @@ const Branding = styled.a`
   text-decoration: none;
   margin-top: -20px;
   color: ${Theme.FONT_GREY};
-  width: min-content;
+  width: fit-content;
+  display: flex;
+  align-items: center;
   ${mobile({ fontSize: "15px" })};
 `;
 
-const Span = styled.span`
+const Span = styled.img`
   color: ${Theme.NAVY_BLUE};
+  width: 110px;
 `;
 
 const Footer = () => {
@@ -47,8 +52,9 @@ const Footer = () => {
             href="https://ehsaantech.com"
             target="_blank"
             rel="noreferrer"
+            onClick={logEhsaantechVisitors}
           >
-            Product by <Span>Ehsaantech.com</Span>
+            Product by <Span src={EhsaanTechlogo} alt="Ehsaantechlogo" />
           </Branding>
         </Right>
       </Wrapper>
