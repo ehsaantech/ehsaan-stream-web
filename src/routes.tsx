@@ -2,15 +2,18 @@ import React, { useEffect, useState } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import Home from "./screens/Home";
 import Tracks from "./container/tracks-container";
-import AudioPlayer from "react-h5-audio-player";
+import AudioPlayer, { RHAP_UI } from "react-h5-audio-player";
+import Forward10Icon from "@mui/icons-material/Forward10";
+import Replay10Icon from "@mui/icons-material/Replay10";
 import "../src/utils/style.css";
 import "react-h5-audio-player/lib/styles.css";
 import { channelData } from "./services/data";
-import { logChannelVisited, pauseTrack, playTrack } from "./services/analytics";
+import { LogChannelVisited, pauseTrack, playTrack } from "./services/analytics";
+import Theme from "./constants/theme";
 
 const Approutes = () => {
   const location = useLocation();
-  const channelPath:any = location.pathname.split("/")[2];
+  const channelPath: any = location.pathname.split("/")[2];
   const [channelIndex, setChannelIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [trackIndex, setTrackIndex] = useState(channelIndex);
@@ -26,12 +29,6 @@ const Approutes = () => {
   }, [channelPath]);
 
   const channelTracks = channelData[channelIndex].mediaTracks;
-
-  useEffect(() => {
-    if (location.pathname.includes(channelPath)) {
-        logChannelVisited(channelPath)
-    }
-  }, [channelPath, location.pathname]);
 
   useEffect(() => {
     if (location.pathname === "/") {
@@ -57,11 +54,38 @@ const Approutes = () => {
       currentTrack < channelTracks.length - 1 ? currentTrack + 1 : 0
     );
   };
+  const audioRef: any = React.useRef(null);
+  const [audioReady, setAudioReady] = React.useState(false);
+
+  const handleCanPlayThrough = () => {
+    setAudioReady(true);
+  };
+
+  const handleClickForward = () => {
+    if (audioReady) {
+      const currentTime = audioRef.current.audio.current.currentTime;
+      audioRef.current.audio.current.currentTime = currentTime + 10;
+    }
+  };
+
+  const handleClickBackward = () => {
+    if (audioReady) {
+      const currentTime = audioRef.current.audio.current.currentTime;
+      audioRef.current.audio.current.currentTime = currentTime - 10;
+    }
+  };
+
   const Tracksrc = channelTracks[trackIndex]?.src;
   const Trackname = channelTracks[trackIndex]?.name;
-  const scholarName = channelData[channelIndex]?.scholarName;
+  const scholarName:any = channelData[channelIndex]?.scholarName;
   const scholarDesc = channelData[channelIndex]?.scholarDescription;
   const channelImg = channelData[channelIndex]?.img;
+
+  useEffect(() => {
+    if (location.pathname.includes(channelPath)) {
+      LogChannelVisited(scholarName);
+    }
+  }, [channelPath, location.pathname, scholarName]);
 
   return (
     <>
@@ -82,6 +106,7 @@ const Approutes = () => {
       </Routes>
       {trackIndex >= 0 ? (
         <AudioPlayer
+          ref={audioRef}
           className="audioplayer"
           style={{
             borderRadius: "1rem",
@@ -95,11 +120,31 @@ const Approutes = () => {
             background: "white",
             zIndex: "100",
           }}
+          customAdditionalControls={[
+            RHAP_UI.LOOP,
+            <Replay10Icon
+              onClick={handleClickBackward}
+              sx={{
+                fontSize: "35px",
+                color: `${Theme.DIM_GREY_COLOR}`,
+                cursor: "pointer",
+              }}
+            />,
+            <Forward10Icon
+              onClick={handleClickForward}
+              sx={{
+                fontSize: "35px",
+                color: `${Theme.DIM_GREY_COLOR}`,
+                cursor: "pointer",
+              }}
+            />,
+          ]}
+          onCanPlayThrough={handleCanPlayThrough}
           autoPlay={isPlaying}
           autoPlayAfterSrcChange={isPlaying}
           src={Tracksrc}
-          onPlay={() => playTrack(channelPath)}
-          onPause={() => pauseTrack(channelPath)}
+          onPlay={() => playTrack(scholarName)}
+          onPause={() => pauseTrack(scholarName)}
           showSkipControls={true}
           showJumpControls={false}
           header={`Now playing: ${Trackname}`}
